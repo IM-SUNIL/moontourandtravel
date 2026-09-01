@@ -10,8 +10,8 @@ import type { Hotel } from "@/data/hotels.data";
 /** Build a list of all photo URLs for a hotel */
 function getPhotoPaths(hotel: Hotel): string[] {
   if (!hotel.photos || hotel.photos.length === 0) return [];
-  return hotel.photos.map(
-    (filename) => `/images/hotels/${hotel.slug}/${filename}`
+  return hotel.photos.map((filename) => 
+    filename.startsWith("/") ? filename : `/images/hotels/${hotel.slug}/${filename}`
   );
 }
 

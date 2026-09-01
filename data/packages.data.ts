@@ -30,11 +30,10 @@ export interface Package {
 export const packages: Package[] = [
   {
     slug: "vaishno-devi-shiv-khori",
-    title: "Vaishno Devi & Shiv Khori Family Package",
+    title: "Vaishno Devi & Shiv Khori Family Couple Package",
     location: "Katra, J&K",
     duration: "2 Nights / 3 Days",
     coverImage: "https://images.unsplash.com/photo-1598424269269-8069676e1919?q=80&w=2670&auto=format&fit=crop",
-    photos: [], // Will be populated from public/images/packages/vaishno-devi-shiv-khori/
     price: "₹9,999 / Couple",
     category: "Couple / Family",
     highlights: [

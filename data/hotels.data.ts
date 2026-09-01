@@ -28,7 +28,7 @@ export interface Hotel {
    * First item = card cover. Add as many as you like.
    * If empty, a generic fallback image is shown.
    */
-  photos: string[];
+  photos?: string[];
   /** Set to true for placeholder hotels */
   isPlaceholder?: boolean;
 }
@@ -44,18 +44,6 @@ export const hotels: Hotel[] = [
       "A well-known, comfortable stay in Katra offering modern amenities at affordable rates — ideal for pilgrims and families.",
     category: "Deluxe",
     tags: ["Deluxe", "Family Stay", "Vaishno Devi Pilgrimage"],
-    photos: [
-      "1.jpeg",
-      "2.jpeg",
-      "3.jpeg",
-      "4.jpeg",
-      "5.jpeg",
-      "6.jpeg",
-      "7.jpeg",
-      "8.jpeg",
-      "9.jpeg",
-      "10.jpeg",
-    ],
   },
   {
     slug: "triple-s",
@@ -64,16 +52,6 @@ export const hotels: Hotel[] = [
       "A popular choice among Vaishno Devi pilgrims, Triple S provides clean rooms and convenient access to Katra town.",
     category: "Standard",
     tags: ["Standard", "Near Katra Market", "Vaishno Devi Pilgrimage"],
-    photos: [
-      "1.jpeg",
-      "2.jpeg",
-      "3.jpeg",
-      "4.jpeg",
-      "5.jpeg",
-      "6.jpeg",
-      "7.jpeg",
-      "8.jpeg",
-    ],
   },
   {
     slug: "bhavani",
@@ -82,17 +60,6 @@ export const hotels: Hotel[] = [
       "Named after the goddess herself, Hotel Bhavani offers pilgrims a peaceful and comfortable base in the heart of Katra.",
     category: "Budget",
     tags: ["Budget", "Vaishno Devi Pilgrimage", "Near Katra Market"],
-    photos: [
-      "1.jpeg",
-      "2.jpeg",
-      "3.jpeg",
-      "4.jpeg",
-      "5.jpeg",
-      "6.jpeg",
-      "7.jpeg",
-      "8.jpeg",
-      "9.jpeg",
-    ],
   },
   {
     slug: "radha-niwas",

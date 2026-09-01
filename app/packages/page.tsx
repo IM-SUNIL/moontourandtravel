@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PackagesGrid from "@/components/PackagesGrid";
 import { packages } from "@/data/packages.data";
+import { discoverGalleryImages } from "@/lib/image-discovery";
 
 export const metadata: Metadata = {
   title: "Tour Packages | Moon Tour Travel",
@@ -11,6 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function PackagesPage() {
+  // Dynamically inject filesystem images
+  const enrichedPackages = packages.map((pkg) => {
+    const discoveredPhotos = discoverGalleryImages("packages", pkg.slug);
+    return {
+      ...pkg,
+      photos: discoveredPhotos.length > 0 ? discoveredPhotos : pkg.photos,
+      coverImage: discoveredPhotos.length > 0 ? discoveredPhotos[0] : pkg.coverImage,
+    };
+  });
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -33,7 +44,7 @@ export default function PackagesPage() {
 
       {/* Packages Grid */}
       <div className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <PackagesGrid packages={packages} />
+        <PackagesGrid packages={enrichedPackages} />
       </div>
 
       <Footer />

@@ -9,8 +9,8 @@ import type { Package } from "@/data/packages.data";
 
 function getPhotoPaths(pkg: Package): string[] {
   if (!pkg.photos || pkg.photos.length === 0) return [pkg.coverImage];
-  return pkg.photos.map(
-    (filename) => `/images/packages/${pkg.slug}/${filename}`
+  return pkg.photos.map((filename) => 
+    filename.startsWith("/") ? filename : `/images/packages/${pkg.slug}/${filename}`
   );
 }
 

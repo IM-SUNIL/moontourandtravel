@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HotelsGrid from "@/components/HotelsGrid";
 import { hotels } from "@/data/hotels.data";
-import { motion } from "framer-motion";
+import { discoverGalleryImages } from "@/lib/image-discovery";
 
 // ─── SEO ─────────────────────────────────────────────────────────────────────
 
@@ -16,6 +16,15 @@ export const metadata: Metadata = {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function HotelsPage() {
+  // Dynamically inject filesystem images
+  const enrichedHotels = hotels.map((hotel) => {
+    const discoveredPhotos = discoverGalleryImages("hotels", hotel.slug);
+    return {
+      ...hotel,
+      photos: discoveredPhotos.length > 0 ? discoveredPhotos : hotel.photos,
+    };
+  });
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
@@ -40,7 +49,7 @@ export default function HotelsPage() {
 
       {/* ── Grid ── */}
       <div className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <HotelsGrid hotels={hotels} />
+        <HotelsGrid hotels={enrichedHotels} />
       </div>
 
       <Footer />
