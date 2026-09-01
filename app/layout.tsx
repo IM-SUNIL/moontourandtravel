@@ -15,6 +15,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Moon Tour and Travels | Premium Travel Agency in Katra",
   description: "Experience luxury travel in Jammu & Kashmir with Moon Tour and Travels. We offer premium hotel bookings, taxi services, and curated tour packages.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

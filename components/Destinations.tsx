@@ -5,11 +5,11 @@ import { ArrowRight, MapPin, Clock } from "lucide-react";
 
 const packages = [
   {
-    title: "Vaishno Devi VIP Darshan",
+    title: "Vaishno Devi & Shiv Khori Family Package",
     location: "Katra, J&K",
-    duration: "2 Days / 1 Night",
+    duration: "2 Nights / 3 Days",
     image: "https://images.unsplash.com/photo-1598424269269-8069676e1919?q=80&w=2670&auto=format&fit=crop",
-    price: "₹4,999",
+    price: "₹9,999 / Couple",
   },
   {
     title: "Kashmir Valley Paradise",

@@ -84,11 +84,15 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-gold shrink-0" />
-                <span>+91 99999 99999</span>
+                <a href="tel:+918082802818" className="hover:text-gold transition-colors">+91 80828 02818</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-green-400 text-sm font-bold shrink-0">WA</span>
+                <a href="https://wa.me/918082802818" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">WhatsApp Us</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-gold shrink-0" />
-                <span>info@moontourandtravels.com</span>
+                <a href="mailto:moontourtravel.in@gmail.com" className="hover:text-gold transition-colors">moontourtravel.in@gmail.com</a>
               </li>
             </ul>
           </motion.div>

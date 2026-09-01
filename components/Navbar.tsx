@@ -19,6 +19,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "/" },
+    { name: "Hotels", href: "/hotels" },
     { name: "Services", href: "/services" },
     { name: "Packages", href: "/packages" },
     { name: "About", href: "/about" },
@@ -73,11 +74,19 @@ export default function Navbar() {
           className="hidden md:flex"
         >
           <a
-            href="tel:+919999999999"
+            href="tel:+918082802818"
             className="flex items-center gap-2 bg-gold/10 border border-gold text-gold px-6 py-2 rounded-full hover:bg-gold hover:text-background transition-all duration-300"
           >
             <Phone size={16} />
             <span className="text-sm font-semibold">Book Now</span>
+          </a>
+          <a
+            href="https://wa.me/918082802818"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-green-500/10 border border-green-500 text-green-400 px-6 py-2 rounded-full hover:bg-green-500 hover:text-white transition-all duration-300"
+          >
+            <span className="text-sm font-semibold">WhatsApp</span>
           </a>
         </motion.div>
 
@@ -117,7 +126,7 @@ export default function Navbar() {
               </motion.div>
             ))}
             <motion.a
-              href="tel:+919999999999"
+              href="tel:+918082802818"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5 }}
@@ -125,6 +134,17 @@ export default function Navbar() {
             >
               <Phone size={20} />
               Book Now
+            </motion.a>
+            <motion.a
+              href="https://wa.me/918082802818"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.6 }}
+              className="flex items-center gap-2 bg-green-500 text-white px-8 py-3 rounded-full font-semibold"
+            >
+              WhatsApp Us
             </motion.a>
           </motion.div>
         )}
