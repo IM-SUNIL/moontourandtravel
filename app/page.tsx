@@ -8,7 +8,14 @@ import Footer from "@/components/Footer";
 import { packages } from "@/data/packages.data";
 import { discoverGalleryImages } from "@/lib/image-discovery";
 
-export default function Home() {
+interface PageProps {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function Home(props: PageProps) {
+  const searchParams = await props.searchParams;
+  const locationQuery = typeof searchParams.location === "string" ? searchParams.location.toLowerCase() : "";
+
   // Dynamically inject filesystem images for the featured packages
   const enrichedPackages = packages.map((pkg) => {
     const discoveredPhotos = discoverGalleryImages("packages", pkg.slug);
@@ -19,12 +26,24 @@ export default function Home() {
     };
   });
 
+  // Filter based on location (case insensitive match on title, location, highlights)
+  const filteredPackages = enrichedPackages.filter((pkg) => {
+    if (!locationQuery) return true; // No search query, show all
+    const searchString = `
+      ${pkg.title} 
+      ${pkg.location} 
+      ${pkg.highlights?.join(" ")}
+    `.toLowerCase();
+    
+    return searchString.includes(locationQuery);
+  });
+
   return (
     <main className="min-h-screen bg-background">
       <Navbar />
       <Hero />
       <Services />
-      <Destinations packages={enrichedPackages} />
+      <Destinations packages={filteredPackages} isSearch={!!locationQuery} searchParams={searchParams} />
       <LocalTour />
       <WhyChooseUs />
       <Footer />

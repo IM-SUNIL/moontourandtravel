@@ -15,14 +15,27 @@ function getPhotoPaths(pkg: Package): string[] {
   );
 }
 
+function getWhatsAppLink(pkg: Package, searchParams?: { [key: string]: string | string[] | undefined }): string {
+  let message = `Hi, I am interested in the following package:\n\nPackage: ${pkg.title}`;
+  
+  if (searchParams?.date) message += `\nTravel Date: ${searchParams.date}`;
+  if (searchParams?.adults) message += `\nAdults: ${searchParams.adults}`;
+  if (searchParams?.children) message += `\nChildren: ${searchParams.children}`;
+  
+  message += `\n\nPlease share availability and booking details.`;
+  
+  return `https://wa.me/918082802818?text=${encodeURIComponent(message)}`;
+}
+
 // ─── Modal ───────────────────────────────────────────────────────────────────
 
 interface ModalProps {
   pkg: Package;
   onClose: () => void;
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-function PackageModal({ pkg, onClose }: ModalProps) {
+function PackageModal({ pkg, onClose, searchParams }: ModalProps) {
   const photos = getPhotoPaths(pkg);
   const [current, setCurrent] = useState(0);
   const [mounted, setMounted] = useState(false);
@@ -151,7 +164,7 @@ function PackageModal({ pkg, onClose }: ModalProps) {
                 Call to Book
               </a>
               <a
-                href={`https://wa.me/918082802818?text=Hi%2C%20I%20am%20interested%20in%20booking%20the%20${encodeURIComponent(pkg.title)}%20package.`}
+                href={getWhatsAppLink(pkg, searchParams)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-green-500/10 border border-green-500 text-green-400 px-6 py-3 rounded-full hover:bg-green-500 hover:text-white transition-all duration-300 font-semibold text-sm w-full"
@@ -226,7 +239,7 @@ function PackageModal({ pkg, onClose }: ModalProps) {
                   Call to Book
                 </a>
                 <a
-                  href={`https://wa.me/918082802818?text=Hi%2C%20I%20am%20interested%20in%20booking%20the%20${encodeURIComponent(pkg.title)}%20package.`}
+                  href={getWhatsAppLink(pkg, searchParams)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 bg-green-500/10 border border-green-500 text-green-400 px-6 py-3 rounded-full hover:bg-green-500 hover:text-white transition-all duration-300 font-semibold text-sm w-full"
@@ -250,9 +263,10 @@ interface CardProps {
   pkg: Package;
   index: number;
   onOpen: (pkg: Package) => void;
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-function PackageCard({ pkg, index, onOpen }: CardProps) {
+function PackageCard({ pkg, index, onOpen, searchParams }: CardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -304,9 +318,10 @@ function PackageCard({ pkg, index, onOpen }: CardProps) {
 
 interface PackagesGridProps {
   packages: Package[];
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default function PackagesGrid({ packages }: PackagesGridProps) {
+export default function PackagesGrid({ packages, searchParams }: PackagesGridProps) {
   const [selected, setSelected] = useState<Package | null>(null);
 
   return (
@@ -318,13 +333,14 @@ export default function PackagesGrid({ packages }: PackagesGridProps) {
             pkg={pkg}
             index={index}
             onOpen={setSelected}
+            searchParams={searchParams}
           />
         ))}
       </div>
 
       <AnimatePresence>
         {selected && (
-          <PackageModal pkg={selected} onClose={() => setSelected(null)} />
+          <PackageModal pkg={selected} onClose={() => setSelected(null)} searchParams={searchParams} />
         )}
       </AnimatePresence>
     </>
