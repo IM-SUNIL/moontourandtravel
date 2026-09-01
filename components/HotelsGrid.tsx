@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, MapPin, Phone, Tag } from "lucide-react";
 import type { Hotel } from "@/data/hotels.data";
@@ -44,16 +45,27 @@ function HotelModal({ hotel, onClose }: ModalProps) {
   const hasFallback = photos.length === 0;
   const displayPhotos = hasFallback ? [FALLBACK_IMAGE] : photos;
   const [current, setCurrent] = useState(0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Scroll lock
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
 
   const prev = () => setCurrent((c) => (c - 1 + displayPhotos.length) % displayPhotos.length);
   const next = () => setCurrent((c) => (c + 1) % displayPhotos.length);
 
-  return (
+  const modalContent = (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
       onClick={onClose}
     >
       <motion.div
@@ -172,6 +184,8 @@ function HotelModal({ hotel, onClose }: ModalProps) {
       </motion.div>
     </motion.div>
   );
+
+  return mounted ? createPortal(modalContent, document.body) : null;
 }
 
 // ─── Hotel Card ───────────────────────────────────────────────────────────────
