@@ -71,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
-          className="mt-16 w-full max-w-4xl glass-card rounded-full p-2 md:p-4 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="mt-16 w-full max-w-4xl glass-card rounded-3xl md:rounded-full p-5 md:p-4 flex flex-col md:flex-row items-center justify-between gap-4"
         >
           <div className="flex-1 flex items-center gap-3 px-4 py-2 border-b md:border-b-0 md:border-r border-gray-600/50 w-full">
             <MapPin className="text-gold" size={24} />
