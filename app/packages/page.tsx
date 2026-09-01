@@ -27,7 +27,7 @@ export default function PackagesPage() {
       <Navbar />
       
       {/* Packages Hero */}
-      <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-white/10">
+      <div className="relative pt-28 pb-12 lg:pt-40 lg:pb-20 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/10 via-background to-background z-0"></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
           <span className="text-gold uppercase tracking-[0.2em] text-sm font-semibold block mb-4">
@@ -43,7 +43,7 @@ export default function PackagesPage() {
       </div>
 
       {/* Packages Grid */}
-      <div className="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="py-12 md:py-20 max-w-7xl mx-auto px-6 lg:px-8">
         <PackagesGrid packages={enrichedPackages} />
       </div>
 

@@ -15,9 +15,9 @@ export default function Destinations({ packages }: DestinationsProps) {
   const featuredPackages = packages.slice(0, 3);
 
   return (
-    <section id="destinations" className="py-24 bg-background relative z-10">
+    <section id="destinations" className="py-16 md:py-24 bg-background relative z-10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-6">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}

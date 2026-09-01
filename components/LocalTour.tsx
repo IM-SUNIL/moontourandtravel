@@ -81,7 +81,7 @@ const itemVariants: Variants = {
 
 export default function LocalTour() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Subtle background glow — matches existing site style */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-background to-background pointer-events-none z-0" />
 
@@ -93,7 +93,7 @@ export default function LocalTour() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <span className="text-gold uppercase tracking-[0.2em] text-sm font-semibold">
             Day After Darshan
@@ -166,7 +166,7 @@ export default function LocalTour() {
                   </div>
 
                   {/* Mobile Step Badge */}
-                  <div className="lg:hidden flex items-center gap-3 self-start">
+                  <div className="lg:hidden flex items-center gap-3 self-start order-first">
                     <div className="w-10 h-10 rounded-full bg-background border-2 border-gold flex items-center justify-center shrink-0">
                       <span className="text-gold font-serif font-bold text-xs">{stop.step}</span>
                     </div>

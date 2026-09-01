@@ -46,14 +46,14 @@ const itemVariants: Variants = {
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 relative">
+    <section id="services" className="py-16 md:py-24 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
           <span className="text-gold uppercase tracking-[0.2em] text-sm font-semibold">What We Offer</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-serif text-white">Our Premium Services</h2>

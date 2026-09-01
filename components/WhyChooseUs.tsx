@@ -5,7 +5,7 @@ import { ShieldCheck, ThumbsUp, Headset, Star } from "lucide-react";
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-16 md:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gold/5 via-background to-background z-0"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center gap-16">

@@ -11,7 +11,7 @@ export default function ServicesPage() {
       <Navbar />
       
       {/* Services Hero */}
-      <div className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-white/10">
+      <div className="relative pt-28 pb-12 lg:pt-40 lg:pb-20 overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold/10 via-background to-background z-0"></div>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
           <motion.span 
@@ -41,7 +41,7 @@ export default function ServicesPage() {
       </div>
 
       {/* Detailed Services */}
-      <div className="py-24 max-w-7xl mx-auto px-6 lg:px-8 space-y-32">
+      <div className="py-12 md:py-20 max-w-7xl mx-auto px-6 lg:px-8 space-y-20 md:space-y-32">
         
         {/* Hotel Booking */}
         <div className="flex flex-col lg:flex-row items-center gap-16">
